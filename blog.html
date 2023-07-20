@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan</title>
+</head>
+<body>
+    <label>Pesan:</label><input id="pesanInput"><br>
+    <label>Berapa kali:</label><input id="jumlahInput"><br>
+    <button type="button" id="myButton" onclick="cetak()">Submit</button>
+    <div id="Text"></div>
+    <ol></ol>
+
+    <script>
+        function cetak(){
+            const pesanInput = document.getElementById('pesanInput').value;
+            const jumlahInput = document.getElementById('jumlahInput').value;
+            const textDiv = document.getElementById('Text');
+            const olList = document.querySelector('ol');
+
+            // Reset text and ol list
+            textDiv.innerHTML = '';
+            olList.innerHTML = '';
+
+            if (pesanInput.trim() === '' || jumlahInput.trim() === '' || isNaN(jumlahInput) || parseInt(jumlahInput) <= 0) {
+                textDiv.innerHTML = 'Mohon isi kedua input dengan benar.';
+                return;
+            }
+
+            for (let i = 0; i < parseInt(jumlahInput); i++) {
+                const listItem = document.createElement('li');
+                listItem.textContent = pesanInput;
+                olList.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>
